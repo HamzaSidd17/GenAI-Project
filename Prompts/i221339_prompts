@@ -1,0 +1,38 @@
+### **Phase 1: Project Definition & Proposal**
+1.  **Topic Selection:** "I need to make a project proposal... My topic of choice is 'AI-generated text detection'."
+2.  **Requirements Check:** "What are the requirements for the proposal?" (uploaded `Project Proposal.pdf`).
+3.  **Literature Review:** "Explain how each of the suggested research papers plays a role in my project."
+4.  **Paper Structure:** "help me setup the complete overleaf proposal project."
+5.  **Refining Objectives:** "I want the project to be a comparison of different architectures and training methodologies."
+
+### **Phase 2: Work Division & Data Curation**
+6.  **Team Planning:** "We have a group of 3 people... I need you to devise a work division... using kaggle as our main computational resource."
+7.  **Member 3 Kickoff:** "I am taking on the role of group member 3. Where do I start with my work?"
+8.  **Data Filtering:** "do I have to manually filter the data or can I do via a script as it has 721,626 rows."
+9.  **Adversarial Generation:** "what if I just make the adversarial dataset from scratch by generating new essays."
+10. **Prompt Engineering:** "improve this prompt... 'You are a college student writing an essay...'"
+11. **Strategy Shift:** "what if we change the prompt to few shot and give it examples of human essays."
+
+### **Phase 3: Track 3 (One-Class Learning - Anomaly Detection)**
+12. **Initial Setup:** "train One-Class SVM (OC-SVM) and AutoEncoder models exclusively on the Human-labeled subset."
+13. **Failure Analysis:** "these are the new results... Detection Rate (Recall) on Humanized AI: 0.0120... what do these results mean?"
+14. **Pivot to Isolation Forest:** "I want to run these 2 experiments on the setup used in this [Corizzo] paper."
+15. **The Paradox Discovery:** "results for feature trained ocl svm... Detection Rate (Recall) on Humanized AI: 0.7000."
+16. **Feature Visualization:** "add a figure for me to add the distribution plots... scale each plot according to its max and min values."
+
+### **Phase 4: Track 1 (Feature-Based Classification)**
+17. **Preprocessing:** "this csv contains features... I want to normalise all the columns."
+18. **Evaluation:** "evaluate on all three test sets" (Standard, Zero-Shot, Few-Shot).
+19. **Result Analysis:** "Accuracy: 0.000... what do these results mean?" (The total failure of classical models on adversarial text).
+20. **Adversarial Training:** "finetune all three models on 15 percent of the data from both adversarial sets and test again."
+
+### **Phase 5: Track 2 (Transformers)**
+21. **Code Structure:** "Since there seem to be some major issue with the current finetuning setup I am thinking of doing the finetuning of transformers from scratch... What do I exactly need to do?"
+22. **Hybrid Failure:** "Testing on Zero-Shot Adversarial... Recall: 0.0000%... is this model trained both on features and the text?"
+23. **Vanilla RoBERTa:** "Test Vanilla RoBERTa on Zero-Shot Adv... Recall: 0.6000%."
+24. **Final Fine-Tuning:** "give me the code to finetune all 3 on the same 15%+15% zero and few shot strategy."
+
+### **Phase 6: Reporting & Deployment**
+25. **Deployment:** "I have my final finetuned roberta model. How do I deploy it?" (Docker/FastAPI).
+27. **Rubric Check:** "check our project against this rubric."
+28. **Consolidation:** "structure this paper in a way where each experiment track has its own methodology section... and a consolidated comparative analysis at the end."

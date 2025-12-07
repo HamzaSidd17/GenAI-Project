@@ -8,10 +8,10 @@ import torch.nn.functional as F
 app = FastAPI(title="AI Text Detection API", version="1.0")
 
 # 2. Global Variables for Model (Lazy Loading)
-MODEL_PATH = "./model_files"
+MODEL_PATH = "Hamza-003/ai-text-detector-distilbert"
 model = None
 tokenizer = None
-device = "cpu" # Use CPU for deployment containers (cheaper/easier)
+device = "cpu"
 
 # 3. Request Schema (Input validation)
 class TextRequest(BaseModel):
@@ -21,7 +21,7 @@ class TextRequest(BaseModel):
 @app.on_event("startup")
 def load_model():
     global model, tokenizer
-    print("Loading RoBERTa model...")
+    print("Loading model from Hugging Face Hub...")
     try:
         tokenizer = AutoTokenizer.from_pretrained(MODEL_PATH)
         model = AutoModelForSequenceClassification.from_pretrained(MODEL_PATH)
@@ -30,6 +30,8 @@ def load_model():
         print("✅ Model loaded successfully.")
     except Exception as e:
         print(f"❌ Failed to load model: {e}")
+        import traceback
+        traceback.print_exc()
 
 # 5. Prediction Endpoint
 @app.post("/predict")
