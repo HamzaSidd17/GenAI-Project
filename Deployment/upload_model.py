@@ -1,7 +1,7 @@
 from huggingface_hub import HfApi, create_repo
 
-model_path = "./final_model_distilbert-base-uncased"
-repo_name = "Hamza-003/ai-text-detector-distilbert"
+model_path = "./final_model_roberta-base"
+repo_name = "Hamza-003/ai-text-detector-roberta"
 
 api = HfApi()
 create_repo(repo_name, exist_ok=True, repo_type="model")

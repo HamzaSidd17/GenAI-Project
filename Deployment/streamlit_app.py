@@ -16,6 +16,7 @@ if st.button("Analyze", type="primary"):
                     "https://hamza-003-ai-text-detection.hf.space/predict",
                     json={"text": text_input}
                 )
+                response.raise_for_status()
                 result = response.json()
                 
                 st.success("Analysis Complete!")

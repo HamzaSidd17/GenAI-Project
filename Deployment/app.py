@@ -8,7 +8,7 @@ import torch.nn.functional as F
 app = FastAPI(title="AI Text Detection API", version="1.0")
 
 # 2. Global Variables for Model (Lazy Loading)
-MODEL_PATH = "Hamza-003/ai-text-detector-distilbert"
+MODEL_PATH = "Hamza-003/ai-text-detector-roberta"
 model = None
 tokenizer = None
 device = "cpu"
