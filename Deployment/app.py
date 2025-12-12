@@ -4,20 +4,16 @@ from transformers import AutoTokenizer, AutoModelForSequenceClassification
 import torch
 import torch.nn.functional as F
 
-# 1. Initialize App
 app = FastAPI(title="AI Text Detection API", version="1.0")
 
-# 2. Global Variables for Model (Lazy Loading)
 MODEL_PATH = "Hamza-003/ai-text-detector-roberta"
 model = None
 tokenizer = None
 device = "cpu"
 
-# 3. Request Schema (Input validation)
 class TextRequest(BaseModel):
     text: str
 
-# 4. Load Model on Startup
 @app.on_event("startup")
 def load_model():
     global model, tokenizer
@@ -33,17 +29,14 @@ def load_model():
         import traceback
         traceback.print_exc()
 
-# 5. Prediction Endpoint
 @app.post("/predict")
 def predict(request: TextRequest):
     if not model:
         raise HTTPException(status_code=500, detail="Model not loaded")
     
-    # Validation
     if len(request.text.strip()) == 0:
         raise HTTPException(status_code=400, detail="Empty text provided")
 
-    # Tokenize
     inputs = tokenizer(
         request.text, 
         padding=True, 
@@ -52,17 +45,14 @@ def predict(request: TextRequest):
         return_tensors="pt"
     ).to(device)
 
-    # Inference
     with torch.no_grad():
         outputs = model(**inputs)
         logits = outputs.logits
         probs = F.softmax(logits, dim=1)
         
-        # Get result
         pred_idx = torch.argmax(probs, dim=1).item()
         confidence = probs[0][pred_idx].item()
 
-    # Map Labels (0 = Human, 1 = AI)
     labels = ["Human", "AI"]
     result = labels[pred_idx]
 
