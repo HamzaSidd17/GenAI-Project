@@ -180,16 +180,6 @@ Training curves, confusion matrices, and evaluation plots are available in the [
 
 ---
 
-## Team
-
-| Student ID | Role |
-|------------|------|
-| i221026 | Model training & experimentation |
-| i221130 | Data preprocessing & feature engineering |
-| i221339 | Deployment & API integration |
-
----
-
 ## Course
 
 **Generative AI** — Semester 7  
